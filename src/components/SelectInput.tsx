@@ -1,12 +1,26 @@
-import React, { ReactElement, useState } from "react"
+import React, { ReactElement, useMemo, useState } from "react"
 import { Button } from "./Button"
+import { TextInput } from "./TextInput"
 
 type Value = string | number
+type SelectOption<T extends Value> = { value: T; label?: ReactElement }
+
+const defaultFilterFunction = <T extends Value>(search: string) => ({
+  value,
+  label,
+}: SelectOption<T>): boolean => {
+  const matches = String(
+    typeof label === "string" || typeof label === "number" ? label : value
+  ).match(new RegExp(search, "i"))
+
+  return matches !== null && matches.length > 0
+}
 
 interface SelectProps<T extends Value> {
-  options?: Array<{ value: T; label?: ReactElement }>
+  options?: SelectOption<T>[] | undefined
   name: string
   onChange?: (value: T) => void
+  filterFunction?: typeof defaultFilterFunction
   placeholder?: string
 }
 
@@ -14,10 +28,17 @@ export const SelectInput = <T extends Value>({
   name,
   onChange,
   options = [],
+  filterFunction = defaultFilterFunction,
   placeholder,
 }: SelectProps<T>) => {
   const [open, setOpen] = useState<boolean>(false)
+  const [searchString, setSearchString] = useState<string>("")
   const [selected, setSelected] = useState<T | undefined>()
+
+  const filteredOptions = useMemo(
+    () => options.filter(filterFunction(searchString)),
+    [filterFunction, searchString, options]
+  )
 
   return (
     <div>
@@ -25,11 +46,24 @@ export const SelectInput = <T extends Value>({
         {name}
       </label>
       <div className="mt-1 relative">
-        <Button onClick={() => setOpen(true)}>
-          {options.find(({ value }) => value === selected)?.value ??
-            placeholder ??
-            name}
-        </Button>
+        {open ? (
+          <TextInput
+            autoFocus
+            onBlur={() =>
+              setTimeout(() => {
+                setOpen(false)
+                setSearchString("")
+              }, 100)
+            }
+            onChange={setSearchString}
+          />
+        ) : (
+          <Button onClick={() => setOpen(true)}>
+            {options.find(({ value }) => value === selected)?.value ??
+              placeholder ??
+              name}
+          </Button>
+        )}
         {open && !!options?.length && (
           <ul
             className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
@@ -37,7 +71,7 @@ export const SelectInput = <T extends Value>({
             role="listbox"
             aria-labelledby={name}
           >
-            {options.map(({ value, label }) => (
+            {filteredOptions.map(({ value, label }) => (
               <li
                 className="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9"
                 id={`${name}-option-${value}`}
