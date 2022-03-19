@@ -1,7 +1,7 @@
 import React, { useState, ReactNode } from "react"
 
 interface TextInputProps<T = string> {
-  onChange: (value: T) => void
+  onChange?: (value: T) => void
   name?: string
   placeholder?: string
   label?: string | ReactNode
@@ -40,7 +40,7 @@ export const TextInput = ({
         onBlur={() => onBlur?.()}
         onChange={(e) => {
           setValue(e.target.value)
-          onChange(e.target.value)
+          onChange?.(e.target.value)
         }}
         name={name}
         id={id ?? name}
