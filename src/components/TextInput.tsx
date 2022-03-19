@@ -7,6 +7,7 @@ interface TextInputProps<T = string> {
   label?: string | ReactNode
   id?: string
   initialValue?: T
+  autoFocus?: boolean
 }
 
 export const TextInput = ({
@@ -15,6 +16,7 @@ export const TextInput = ({
   label,
   onChange,
   placeholder,
+  autoFocus,
   initialValue = "",
 }: TextInputProps<string>) => {
   const [value, setValue] = useState<string>(initialValue)
@@ -28,6 +30,7 @@ export const TextInput = ({
         {label ?? name}
       </label>
       <input
+        autoFocus={autoFocus}
         type="text"
         value={value}
         onChange={(e) => {
