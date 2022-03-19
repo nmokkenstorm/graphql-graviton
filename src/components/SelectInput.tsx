@@ -20,6 +20,7 @@ interface SelectProps<T extends Value> {
   options?: SelectOption<T>[] | undefined
   name: string
   onChange?: (value: T) => void
+  onSearchChange?: (value: string) => void
   filterFunction?: typeof defaultFilterFunction
   placeholder?: string
 }
@@ -27,6 +28,7 @@ interface SelectProps<T extends Value> {
 export const SelectInput = <T extends Value>({
   name,
   onChange,
+  onSearchChange,
   options = [],
   filterFunction = defaultFilterFunction,
   placeholder,
@@ -55,7 +57,10 @@ export const SelectInput = <T extends Value>({
                 setSearchString("")
               }, 100)
             }
-            onChange={setSearchString}
+            onChange={(search: string) => {
+              onSearchChange?.(search)
+              setSearchString(search)
+            }}
           />
         ) : (
           <Button onClick={() => setOpen(true)}>
