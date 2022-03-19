@@ -6,6 +6,7 @@ interface TextInputProps<T = string> {
   placeholder?: string
   label?: string | ReactNode
   id?: string
+  onBlur?: () => void
   initialValue?: T
   autoFocus?: boolean
 }
@@ -14,6 +15,7 @@ export const TextInput = ({
   id,
   name,
   label,
+  onBlur,
   onChange,
   placeholder,
   autoFocus,
@@ -35,6 +37,7 @@ export const TextInput = ({
         autoFocus={autoFocus}
         type="text"
         value={value}
+        onBlur={() => onBlur?.()}
         onChange={(e) => {
           setValue(e.target.value)
           onChange(e.target.value)
