@@ -78,7 +78,7 @@ export const SelectInput = <T extends Value>({
           >
             {filteredOptions.map(({ value, label }) => (
               <li
-                className="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9"
+                className="group cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-indigo-600"
                 id={`${name}-option-${value}`}
                 key={`${name}-option-${value}`}
                 role="option"
@@ -88,11 +88,11 @@ export const SelectInput = <T extends Value>({
                   setSelected?.(value)
                 }}
               >
-                <span className="font-normal block truncate">
+                <span className="font-normal block truncate text-gray-900 group-hover:text-white">
                   {label ?? value}
                 </span>
                 {value === selected && (
-                  <span className="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
+                  <span className="group-hover:text-white text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
                     <svg
                       className="h-5 w-5"
                       xmlns="http://www.w3.org/2000/svg"
