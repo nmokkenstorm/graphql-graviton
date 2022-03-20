@@ -1,12 +1,8 @@
 import React from "react"
-import { SelectInput } from "./components/SelectInput"
+
 import { useLocalStorage } from "./hooks/useLocalStorage"
 import { ApolloProvider } from "./ApolloProvider"
-import { useQueries } from "./hooks/useQueries"
-
-const QuerySelector = () => (
-  <SelectInput name="query" options={useQueries().queries} />
-)
+import { QuerySelector } from "./QuerySelector"
 
 export const Builder = () => {
   const [token] = useLocalStorage("token")
@@ -14,7 +10,7 @@ export const Builder = () => {
 
   return (
     <ApolloProvider token={token ?? ""} baseUrl={baseUrl}>
-      <QuerySelector />
+      <QuerySelector/>
     </ApolloProvider>
   )
 }
