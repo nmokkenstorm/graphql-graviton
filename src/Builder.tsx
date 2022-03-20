@@ -1,6 +1,6 @@
 import React from "react"
 import { SelectInput } from "./components/SelectInput"
-import { useLocalStorage } from "./utils/useLocalStorage"
+import { useLocalStorage } from "./hooks/useLocalStorage"
 import { ApolloProvider } from "./ApolloProvider"
 import { useQueries } from "./hooks/useQueries"
 

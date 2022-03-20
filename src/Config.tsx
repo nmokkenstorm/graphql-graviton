@@ -1,6 +1,6 @@
 import React from "react"
 import { TextInput } from "./components/TextInput"
-import { useLocalStorage } from "./utils/useLocalStorage"
+import { useLocalStorage } from "./hooks/useLocalStorage"
 
 export const Config = () => {
   const [token, setToken] = useLocalStorage("token")
