@@ -15,8 +15,7 @@ export const App = () => (
         Graviton
       </h2>
     </div>
-
-    <div className="mt-8 sm:mx-auto sm:w-full md:max-w-xl">
+      <div className="mt-8 sm:mx-auto sm:w-full md:max-w-3xl">
       <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
         <Router>
           <Routes>
