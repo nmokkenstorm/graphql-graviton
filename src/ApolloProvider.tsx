@@ -1,4 +1,4 @@
-import React, { useMemo, ReactChild } from "react"
+import React, { useMemo, ReactNode } from "react"
 
 import {
   ApolloClient,
@@ -38,7 +38,7 @@ const createApolloClient = (token: Token, baseUrl: URL) => {
 }
 
 interface ProviderProps {
-  children?: ReactChild
+  children?: ReactNode
   token?: string
   baseUrl?: string
 }
