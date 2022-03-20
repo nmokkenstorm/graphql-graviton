@@ -1,6 +1,8 @@
 import React, { ReactElement, useMemo, useState } from "react"
 import { Button } from "./Button"
 import { TextInput } from "./TextInput"
+import { useSelectedIndex } from "../hooks/useSelectedIndex"
+import { createKeyHandler } from "../utils/keys"
 
 type Value = string | number
 type SelectOption<T extends Value> = { value: T; label?: ReactElement }
@@ -42,8 +44,24 @@ export const SelectInput = <T extends Value>({
     [filterFunction, searchString, options]
   )
 
+  const { increase, decrease, reset, selectedIndex } = useSelectedIndex(
+    filteredOptions.length
+  )
+
+  const selectValue = (value: T) => {
+    setOpen(false)
+    onChange?.(value)
+    setSelected?.(value)
+  }
+
+  const keyHandler = createKeyHandler({
+    ArrowDown: increase,
+    ArrowUp: decrease,
+    Enter: () => selectValue(filteredOptions[selectedIndex].value),
+  })
+
   return (
-    <div>
+    <div onKeyDown={keyHandler}>
       <label id={name} className="block text-sm font-medium text-gray-700">
         {name}
       </label>
@@ -54,11 +72,13 @@ export const SelectInput = <T extends Value>({
             onBlur={() =>
               setTimeout(() => {
                 setOpen(false)
+                reset()
                 setSearchString("")
               }, 100)
             }
             onChange={(search: string) => {
               onSearchChange?.(search)
+              reset()
               setSearchString(search)
             }}
           />
