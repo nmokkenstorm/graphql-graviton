@@ -1,6 +1,9 @@
 import React, { ReactElement, useMemo, useState } from "react"
+
 import { Button } from "./Button"
+import { List } from "./List"
 import { TextInput } from "./TextInput"
+
 import { useSelectedIndex } from "../hooks/useSelectedIndex"
 import { createKeyHandler } from "../utils/keys"
 
@@ -90,60 +93,12 @@ export const SelectInput = <T extends Value>({
           </Button>
         )}
         {open && !!options?.length && (
-          <ul
-            className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
-            tabIndex={-1}
-            role="listbox"
-            aria-labelledby={name}
-          >
-            {filteredOptions.map(({ value, label }, index) => {
-              const isActive = index === selectedIndex
-              const key = `${name}-option-${value}`
-
-              return (
-                <li
-                  className={`group cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-indigo-600 ${
-                    isActive ? "bg-indigo-600" : 0
-                  }`}
-                  id={key}
-                  key={key}
-                  role="option"
-                  onClick={() => {
-                    selectValue(value)
-                  }}
-                >
-                  <span
-                    className={`font-normal block truncate text-gray-900 group-hover:text-white ${
-                      isActive ? "text-white" : ""
-                    }`}
-                  >
-                    {label ?? value}
-                  </span>
-                  {value === selected && (
-                    <span
-                      className={`group-hover:text-white text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4 ${
-                        isActive ? "text-white" : ""
-                      }`}
-                    >
-                      <svg
-                        className="h-5 w-5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                  )}
-                </li>
-              )
-            })}
-          </ul>
+          <List
+            onSelect={selectValue}
+            options={filteredOptions}
+            focussedIndex={selectedIndex}
+            value={selected}
+          />
         )}
       </div>
     </div>
