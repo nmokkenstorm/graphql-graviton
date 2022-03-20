@@ -9,7 +9,7 @@ import { createKeyHandler } from "../utils/keys"
 
 type Value = string | number
 type SelectOption<T extends Value> = { value: T; label?: ReactElement }
-
+const blurDelay: number = 150
 const defaultFilterFunction = <T extends Value>(search: string) => ({
   value,
   label,
@@ -77,7 +77,7 @@ export const SelectInput = <T extends Value>({
                 setOpen(false)
                 reset()
                 setSearchString("")
-              }, 100)
+              }, blurDelay)
             }
             onChange={(search: string) => {
               onSearchChange?.(search)
