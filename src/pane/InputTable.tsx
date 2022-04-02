@@ -1,7 +1,7 @@
 import React from "react"
-import { useType } from "./hooks/useQueries"
-import { TextInput } from "./components/TextInput"
-import { isObjectType, unwrapType } from "./utils/introspection"
+import { useType } from "../hooks/useQueries"
+import { TextInput } from "../components/TextInput"
+import { isObjectType, unwrapType } from "../utils/introspection"
 
 export const InputTable = ({ activeQuery }: { activeQuery: string }) => {
   const type = useType(activeQuery)
