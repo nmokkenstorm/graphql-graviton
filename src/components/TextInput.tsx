@@ -1,25 +1,25 @@
 import React, { useState, ReactNode } from "react"
 
 interface TextInputProps<T = string> {
-  onChange?: (value: T) => void
-  name?: string
-  placeholder?: string
-  label?: string | ReactNode
-  id?: string
-  onBlur?: () => void
-  initialValue?: T
   autoFocus?: boolean
+  id?: string
+  initialValue?: T
+  label?: string | ReactNode
+  name?: string
+  onBlur?: () => void
+  onChange?: (value: T) => void
+  placeholder?: string
 }
 
 export const TextInput = ({
+  autoFocus,
   id,
-  name,
+  initialValue = "",
   label,
+  name,
   onBlur,
   onChange,
   placeholder,
-  autoFocus,
-  initialValue = "",
 }: TextInputProps<string>) => {
   const [value, setValue] = useState<string>(initialValue)
 

@@ -1,8 +1,8 @@
 import React, { ReactChild } from "react"
 
 interface ButtonProps {
-  onClick?: () => void
   children?: ReactChild
+  onClick?: () => void
 }
 
 export const Button = ({ children, onClick }: ButtonProps) => (

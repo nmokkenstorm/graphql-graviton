@@ -5,9 +5,9 @@ type Value = string | number
 type SelectOption<T extends Value> = { value: T; label?: ReactElement }
 
 interface ListProps<T extends Value> {
+  focussedIndex?: number
   onSelect?: (value: T) => void
   options?: SelectOption<T>[]
-  focussedIndex?: number
   value?: T
 }
 

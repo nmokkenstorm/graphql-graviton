@@ -22,11 +22,11 @@ const defaultFilterFunction = <T extends Value>(search: string) => ({
 }
 
 interface SelectProps<T extends Value> {
-  options?: SelectOption<T>[] | undefined
+  filterFunction?: typeof defaultFilterFunction
   name: string
   onChange?: (value: T) => void
   onSearchChange?: (value: string) => void
-  filterFunction?: typeof defaultFilterFunction
+  options?: SelectOption<T>[] | undefined
   placeholder?: string
 }
 
