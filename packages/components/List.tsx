@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react"
-import { Check } from "../utils/icons"
+import { Check } from "./Icon"
 
 type Value = string | number
 type SelectOption<T extends Value> = { value: T; label?: ReactElement }
