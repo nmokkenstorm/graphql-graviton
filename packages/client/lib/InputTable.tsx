@@ -1,17 +1,23 @@
 import React from "react"
 import { useQuery, unwrapType } from "@graviton/utils"
-import { TextInput } from "@graviton/components"
+import { EmptyState, TextInput } from "@graviton/components"
 
 interface InputTableProps {
- activeQuery: string 
+  activeQuery: string
 }
 
 export const InputTable = ({ activeQuery }: InputTableProps) => {
-
   const query = useQuery(activeQuery)
 
   if (!query?.args?.length) {
-     return null
+    return (
+      <div className="mt-8 text-center">
+        <EmptyState
+          title="no parameters"
+          subtitle="this query has no parameters available"
+        />
+      </div>
+    )
   }
 
   return (
@@ -43,7 +49,7 @@ export const InputTable = ({ activeQuery }: InputTableProps) => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 bg-white">
-                {query.args.map(({name, type}) => (
+                {query.args.map(({ name, type }) => (
                   <tr className="divide-x divide-gray-200" key={name}>
                     <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
                       {name}
