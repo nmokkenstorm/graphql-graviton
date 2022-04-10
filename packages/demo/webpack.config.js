@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
   entry: {
-    app: ["./packages/demo/index.tsx"],
+    app: ["./src/index.tsx"],
     vendor: ["react", "react-dom"],
   },
   devServer: {
@@ -67,7 +67,7 @@ module.exports = {
   },
   plugins: [
     new CleanTerminalPlugin(),
-    new HtmlWebpackPlugin({ template: "./packages/demo/index.html" }),
+    new HtmlWebpackPlugin({ template: "./src/index.html" }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css",

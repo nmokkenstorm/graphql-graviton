@@ -1,14 +1,14 @@
 {
-  "name": "@graviton/utils",
+  "name": "@graviton/client",
   "version": "0.0.1",
-  "description": "shared utilities for graviton",
+  "description": "web client",
   "keywords": [
-    "utils"
+    "client"
   ],
   "author": "Niels Mokkenstorm <niels@mokkenstorm.dev>",
   "homepage": "https://github.com/nmokkenstorm/graphql-graviton/tree/main/packages/utils#readme",
   "license": "ISC",
-  "main": "lib/utils.ts",
+  "main": "lib/App.tsx",
   "directories": {
     "lib": "lib"
   },
@@ -25,14 +25,18 @@
   "bugs": {
     "url": "https://github.com/nmokkenstorm/graphql-graviton/issues"
   },
-  "devDdependencies": {
-    "@types/react": "^17.0.38",
-    "react": "^17.0.38"
-  },
+  "devDdependencies": {},
   "dependencies": {
     "@apollo/client": "^3.5.10",
-    "graphql": "^16.3.0",
+    "@graviton/components": "^0.0.1",
+    "@graviton/utils": "^0.0.1",
+    "@tailwindcss/forms": "^0.4.0",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.3.0",
+    "tailwindcss": "^3.0.11",
+    "typescript": "^4.5.4"
   }
 }

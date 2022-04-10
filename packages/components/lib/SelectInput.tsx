@@ -4,8 +4,7 @@ import { Button } from "./Button"
 import { List } from "./List"
 import { TextInput } from "./TextInput"
 
-import { useSelectedIndex } from "../hooks/useSelectedIndex"
-import { createKeyHandler } from "../utils/lib/keys"
+import { createKeyHandler, useSelectedIndex } from "@graviton/utils"
 
 type Value = string | number
 type SelectOption<T extends Value> = { value: T; label?: ReactElement }

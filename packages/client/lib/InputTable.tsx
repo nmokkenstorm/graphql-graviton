@@ -1,7 +1,6 @@
 import React from "react"
-import { useType } from "../hooks/useQueries"
-import { TextInput } from "../components/TextInput"
-import { isObjectType, unwrapType } from "../utils/lib/introspection"
+import { useType, isObjectType, unwrapType } from "@graviton/utils"
+import { TextInput } from "@graviton/components"
 
 export const InputTable = ({ activeQuery }: { activeQuery: string }) => {
   const type = useType(activeQuery)

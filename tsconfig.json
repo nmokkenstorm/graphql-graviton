@@ -1,16 +1,22 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "commonjs",
-    "jsx": "react",
-    "strict": true,
-    "downlevelIteration": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": "packages",
-    "paths": {
-      "test-utils": ["./utils/test-utils"]
-    },
-    "typeRoots": ["./packages/@types"]
-  }
+ "compilerOptions": {
+   "module": "commonjs",
+   "declaration": true,
+   "noImplicitAny": false,
+   "removeComments": true,
+   "noLib": false,
+   "jsx": "react",
+   "esModuleInterop": true,
+   "emitDecoratorMetadata": true,
+   "experimentalDecorators": true,
+   "target": "es6",
+   "sourceMap": true,
+   "lib": [
+     "es6"
+   ]
+ },
+ "exclude": [
+   "node_modules",
+   "**/*.spec.ts"
+ ]
 }

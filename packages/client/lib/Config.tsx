@@ -1,6 +1,6 @@
 import React from "react"
-import { TextInput } from "../components/TextInput"
-import { useLocalStorage } from "../hooks/useLocalStorage"
+import { TextInput } from "@graviton/components"
+import { useLocalStorage } from "@graviton/utils"
 
 export const Config = () => {
   const [token, setToken] = useLocalStorage("token")

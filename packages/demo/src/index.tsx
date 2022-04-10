@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { App } from './App'
+import { App } from '@graviton/client'
 import './index.css'
 
 const target = document.getElementById('react-root');

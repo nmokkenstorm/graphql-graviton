@@ -1,8 +1,8 @@
 import React from "react"
 
-import { useLocalStorage } from "../hooks/useLocalStorage"
+import { useLocalStorage } from "@graviton/utils"
 import { Pane } from "./Pane"
-import { ApolloProvider } from "../client/ApolloProvider"
+import { ApolloProvider } from "./ApolloProvider"
 
 export const Builder = () => {
   const [token] = useLocalStorage("token")

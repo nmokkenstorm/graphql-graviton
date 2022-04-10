@@ -1,6 +1,6 @@
 import { getIntrospectionQuery, IntrospectionQuery } from "graphql/utilities"
 import { useQuery, gql } from "@apollo/client"
-import { isObjectType } from "../utils/lib/introspection"
+import { isObjectType } from "./introspection"
 
 const introspection = getIntrospectionQuery()
 

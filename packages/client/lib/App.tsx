@@ -1,7 +1,8 @@
 import React from "react"
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom"
-import { Config } from "../client/Config"
-import { Builder } from "../pane/Builder"
+
+import { Builder } from "./Builder"
+import { Config } from "./Config"
 
 export const App = () => (
   <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -17,7 +18,7 @@ export const App = () => (
     </div>
       <div className="mt-8 sm:mx-auto sm:w-full md:max-w-3xl">
       <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <Router>
+          <Router>
           <Routes>
             <Route path="/" element={<Builder />} />
             <Route path="/config" element={<Config />} />

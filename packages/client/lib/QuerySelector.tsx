@@ -1,8 +1,7 @@
 import React from "react"
 
-import { SelectInput } from "../components/SelectInput"
-import { useQueries } from "../hooks/useQueries"
-import { unwrapType } from "../utils/lib/introspection"
+import { SelectInput } from "@graviton/components"
+import { unwrapType, useQueries } from "@graviton/utils"
 
 interface QuerySelectorProps {
   onChange?: (value: string) => void

@@ -1,6 +1,6 @@
 module.exports = {
   darkMode: true,
-  content: ["./packages/**/*.tsx"],
+  content: ["node_modules/@graviton/**/*.tsx"],
   theme: {
     extend: {},
   },
