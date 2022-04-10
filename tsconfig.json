@@ -7,10 +7,10 @@
     "downlevelIteration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": "src",
+    "baseUrl": "packages",
     "paths": {
       "test-utils": ["./utils/test-utils"]
     },
-    "typeRoots": ["./src/@types"]
+    "typeRoots": ["./packages/@types"]
   }
 }
