@@ -5,7 +5,7 @@ import { List } from "./List"
 import { TextInput } from "./TextInput"
 
 import { useSelectedIndex } from "../hooks/useSelectedIndex"
-import { createKeyHandler } from "../utils/keys"
+import { createKeyHandler } from "../utils/lib/keys"
 
 type Value = string | number
 type SelectOption<T extends Value> = { value: T; label?: ReactElement }

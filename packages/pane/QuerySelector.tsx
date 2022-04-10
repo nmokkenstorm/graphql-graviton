@@ -2,7 +2,7 @@ import React from "react"
 
 import { SelectInput } from "../components/SelectInput"
 import { useQueries } from "../hooks/useQueries"
-import { unwrapType } from "../utils/introspection"
+import { unwrapType } from "../utils/lib/introspection"
 
 interface QuerySelectorProps {
   onChange?: (value: string) => void
