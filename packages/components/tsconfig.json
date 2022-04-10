@@ -1,7 +1,8 @@
 {
  "extends": "../../tsconfig.json",
  "compilerOptions": {
-   "outDir": "./build"
+   "outDir": "./build",
+    "lib": ["es6", "dom"]
  },
  "include": [
    "./lib"
