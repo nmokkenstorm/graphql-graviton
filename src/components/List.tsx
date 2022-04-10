@@ -28,7 +28,7 @@ export const List = <T extends Value>({
       return (
         <li
           className={`group cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-indigo-600 ${
-            isActive ? "bg-indigo-600" : 0
+            isActive ? "bg-indigo-600" : ""
           }`}
           id={String(optionValue)}
           key={String(optionValue)}
