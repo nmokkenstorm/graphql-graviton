@@ -1,7 +1,7 @@
 import React from "react"
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom"
-import { Config } from "./Config"
-import { Builder } from "./pane/Builder"
+import { Config } from "../client/Config"
+import { Builder } from "../pane/Builder"
 
 export const App = () => (
   <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
