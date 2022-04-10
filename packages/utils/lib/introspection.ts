@@ -3,7 +3,6 @@ import {
   IntrospectionType,
   IntrospectionTypeRef,
   IntrospectionNamedTypeRef,
-  IntrospectionOutputTypeRef,
 } from "graphql/utilities"
 
 const isWrappedType = (
@@ -15,12 +14,12 @@ export const isObjectType = (
   type: IntrospectionType
 ): type is IntrospectionObjectType => type.kind === "OBJECT"
 
-export const nameWrappedType = (value: IntrospectionOutputTypeRef): string =>
+export const nameWrappedType = (value: IntrospectionTypeRef): string =>
   isWrappedType(value)
     ? `${value.kind}<${nameWrappedType(value.ofType)}>`
     : value.name
 
 export const unwrapType = (
-  value: IntrospectionOutputTypeRef
+  value: IntrospectionTypeRef
 ): IntrospectionNamedTypeRef =>
   isWrappedType(value) ? unwrapType(value.ofType) : value

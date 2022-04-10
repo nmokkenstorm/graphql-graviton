@@ -1,11 +1,12 @@
 import { getIntrospectionQuery, IntrospectionQuery } from "graphql/utilities"
-import { useQuery, gql } from "@apollo/client"
+import { useQuery as useApolloQuery, gql } from "@apollo/client"
+
 import { isObjectType } from "./introspection"
 
 const introspection = getIntrospectionQuery()
 
 export const useType = (name: string) => {
-  const { data } = useQuery<IntrospectionQuery>(
+  const { data } = useApolloQuery<IntrospectionQuery>(
     gql`
       ${introspection}
     `
@@ -19,3 +20,6 @@ export const useQueries = () => {
 
   return result && isObjectType(result) ? result.fields : []
 }
+
+export const useQuery = (queryName: string) =>
+  useQueries().find(({ name }) => name === queryName)
