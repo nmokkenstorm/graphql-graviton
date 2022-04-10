@@ -1,7 +1,7 @@
 import React from "react"
 
 import { SelectInput } from "@graviton/components"
-import { unwrapType, useQueries } from "@graviton/utils"
+import { useQueries } from "@graviton/utils"
 
 interface QuerySelectorProps {
   onChange?: (value: string) => void
@@ -14,9 +14,9 @@ export const QuerySelector = ({ onChange }: QuerySelectorProps) => {
     <SelectInput
       name="query"
       onChange={(value) => {
-        const resolved = queries.find(({ name }) => name === value)?.type
+        const resolved = queries.find(({ name }) => name === value)
 
-        resolved && onChange?.(unwrapType(resolved).name)
+        resolved && onChange?.(resolved.name)
       }}
       options={queries.map(({ name }) => ({ value: name }))}
     />

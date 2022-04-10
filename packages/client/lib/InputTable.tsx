@@ -1,12 +1,17 @@
 import React from "react"
-import { useType, isObjectType, unwrapType } from "@graviton/utils"
+import { useQuery, unwrapType } from "@graviton/utils"
 import { TextInput } from "@graviton/components"
 
-export const InputTable = ({ activeQuery }: { activeQuery: string }) => {
-  const type = useType(activeQuery)
+interface InputTableProps {
+ activeQuery: string 
+}
 
-  if (!type || !isObjectType(type)) {
-    return null
+export const InputTable = ({ activeQuery }: InputTableProps) => {
+
+  const query = useQuery(activeQuery)
+
+  if (!query?.args?.length) {
+     return null
   }
 
   return (
@@ -38,18 +43,18 @@ export const InputTable = ({ activeQuery }: { activeQuery: string }) => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 bg-white">
-                {type.fields.map((field) => (
-                  <tr className="divide-x divide-gray-200">
+                {query.args.map(({name, type}) => (
+                  <tr className="divide-x divide-gray-200" key={name}>
                     <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
-                      {field.name}
+                      {name}
                     </td>
                     <td className="whitespace-nowrap p-4 text-sm text-gray-500">
-                      {unwrapType(field.type).name}
+                      {unwrapType(type).name}
                     </td>
                     <td className="whitespace-nowrap p-4 text-sm text-gray-500">
                       <TextInput
-                        name={field.name}
-                        placeholder={unwrapType(field.type).name}
+                        name={name}
+                        placeholder={unwrapType(type).name}
                       />
                     </td>
                   </tr>
