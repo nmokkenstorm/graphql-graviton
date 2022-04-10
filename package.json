@@ -1,5 +1,5 @@
 {
-  "name": "summa-poc",
+  "name": "graviton",
   "version": "0.0.1",
   "description": "",
   "main": "./packages/index.ts",
